@@ -1,0 +1,15 @@
+# IDE 
+.vscode/
+
+# Cache
+*.tsbuildinfo
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+
+# Node
+/node_modules

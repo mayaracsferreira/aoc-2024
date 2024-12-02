@@ -1,0 +1,30 @@
+{
+  "name": "aoc-2024",
+  "version": "1.0.0",
+  "description": "Advent of Code 2024",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot",
+    "build": "webpack -p",
+    "test": "karma start",
+    "run-file": "npx ts-node src/puzzle/day1/aoc-1.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mayaracsferreira/aoc-2024.git"
+  },
+  "keywords": [
+    "aoc",
+    "aoc-2024"
+  ],
+  "author": "mayaracsferreira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayaracsferreira/aoc-2024/issues"
+  },
+  "homepage": "https://github.com/mayaracsferreira/aoc-2024#readme",
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2"
+  }
+}
