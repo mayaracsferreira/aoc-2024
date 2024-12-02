@@ -18,7 +18,11 @@ function splitStringColumns(input: string): number[][] {
     leftArray.push(+pair[0]);
     rightArray.push(+pair[1]);
   });
-  return [leftArray, rightArray]
+  return [leftArray, rightArray];
+}
+
+function sumArrayElements(inputArray: number[]) {
+  return inputArray.reduce((acc, current) => acc + current, 0);
 }
 
 // Read file
@@ -38,5 +42,17 @@ leftArray.forEach((item, index) => {
 });
 
 // Sum distances
-const result = distances.reduce((acc, current) => acc + current, 0);
-console.log(`result ${result}`);
+const result = sumArrayElements(distances);
+console.log(`Part 1 result ${result}`);
+
+// Check how many times each item of the left array appears in the right array
+const occurences: number[] = [];
+leftArray.forEach((leftItem) => {
+  const totalItemOccurence = rightArray.filter(
+    (rightItem) => leftItem === rightItem
+  ).length;
+  occurences.push(leftItem * totalItemOccurence);
+});
+
+const result2 = sumArrayElements(occurences);
+console.log(`Part 2 result ${result2}`);
