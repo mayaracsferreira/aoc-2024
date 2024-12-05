@@ -46,8 +46,8 @@ function isAdjascentDistanceValid(inputArray: number[]) {
     return Math.abs(item - inputArray[index]);
   });
 
-  const isDistanceValid = consecutiveLevesDistances.every(
-    (distance) => isValidDistance(distance)
+  const isDistanceValid = consecutiveLevesDistances.every((distance) =>
+    isValidDistance(distance)
   );
   return isDistanceValid;
 }
@@ -61,4 +61,24 @@ let totalSafeReports: number = reports.reduce((total, level) => {
   return total + (isSafe(level) ? 1 : 0);
 }, 0);
 
-console.log(`Total of safe levels ${totalSafeReports}`);
+function validateAndAdjustArray(inputArray: number[]): boolean {
+  if (isSafe(inputArray)) {
+    return true;
+  }
+
+  for (let i = 0; i < inputArray.length; i++) {
+    const newArray = [...inputArray.slice(0, i), ...inputArray.slice(i + 1)];
+    if (isSafe(newArray)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+let totalSafeReports2 = reports.reduce((total, level) => {
+  const isValid = validateAndAdjustArray(level);
+  return total + (isValid ? 1 : 0);
+}, 0);
+
+console.log(`Total of safe levels part one: ${totalSafeReports}`);
+console.log(`Total of safe levels part two: ${totalSafeReports2}`);
