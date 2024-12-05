@@ -13,3 +13,6 @@ dist/**/*
 
 # Node
 /node_modules
+
+# Inputs
+input*.txt
