@@ -37,21 +37,23 @@ function isGradual(inputArray: number[]) {
   return isAllIncreasing(inputArray) || isAllDecreasing(inputArray);
 }
 
+function isValidDistance(distance: number): boolean {
+  return distance >= 1 && distance <= 3;
+}
+
 function isAdjascentDistanceValid(inputArray: number[]) {
   const consecutiveLevesDistances = inputArray.slice(1).map((item, index) => {
     return Math.abs(item - inputArray[index]);
   });
 
   const isDistanceValid = consecutiveLevesDistances.every(
-    (distance) => distance >= 1 && distance <= 3
+    (distance) => isValidDistance(distance)
   );
   return isDistanceValid;
 }
 
 function isSafe(inputArray: number[]): boolean {
-  const isSafe =
-    isAdjascentDistanceValid(inputArray) &&
-    isGradual(inputArray)
+  const isSafe = isAdjascentDistanceValid(inputArray) && isGradual(inputArray);
   return isSafe;
 }
 
