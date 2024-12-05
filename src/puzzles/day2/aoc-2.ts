@@ -33,6 +33,10 @@ function isAllDecreasing(inputArray: number[]): boolean {
   return true;
 }
 
+function isGradual(inputArray: number[]) {
+  return isAllIncreasing(inputArray) || isAllDecreasing(inputArray);
+}
+
 function isAdjascentDistanceValid(inputArray: number[]) {
   const consecutiveLevesDistances = inputArray.slice(1).map((item, index) => {
     return Math.abs(item - inputArray[index]);
@@ -47,7 +51,7 @@ function isAdjascentDistanceValid(inputArray: number[]) {
 function isSafe(inputArray: number[]): boolean {
   const isSafe =
     isAdjascentDistanceValid(inputArray) &&
-    (isAllIncreasing(inputArray) || isAllDecreasing(inputArray));
+    isGradual(inputArray)
   return isSafe;
 }
 
